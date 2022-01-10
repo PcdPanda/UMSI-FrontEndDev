@@ -1,0 +1,15 @@
+<h1>Welcome to Homework TimeCode_3808</h1>
+
+{% if result %}
+  <p>Your result is a {{result}}</p>
+{% endif %}
+
+<form method="post">
+  <p>Field1: <input type="text" placeholder="" name="field1" 
+    {% if field1 %} value="{{field1}}" {% endif %}> </p>
+
+  <p>Field2: <input type="text" placeholder="" name="field2" 
+      {% if field2 %} value="{{field2}}" {% endif %}> </p> 
+  {% csrf_token %}
+  <input type="submit" value="Submit">
+</form>

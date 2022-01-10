@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>10 Second Timer</title>
+</head>
+
+<body>
+  <script>
+    var time = (new Date()).getTime(), init_done = false;
+    var range;
+    function init() {
+      time = (new Date()).getTime();
+      init_done = true;
+      range = (document.getElementById("range")).value;
+        console.log(range);
+        try{
+          if(!(range>=0))throw new Error("Invalid input, the timer is set to be 7")
+        }
+        catch(error){
+          console.log(error);
+          range = 7;
+        }
+    }
+    setInterval(function(){
+      if(init_done){
+        var timer = document.getElementById("timer");
+        var text = range - Math.floor(((new Date()).getTime() - time) / 1000);
+        text = text < 1 ? "Timer done!": text;
+        timer.innerText = text;
+      }
+    }, 1);
+  </script>
+   Set countdown timer (in seconds): <input type="text"value="7" id="range">
+  <h1 id="timer">Click to start</h1>
+  <button type="button" onclick="init()">Restart</button>
+</body>
+
+</html>
